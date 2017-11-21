@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `BDContabil`.`tb_grupo` (
   `id_grupo` INT(11) NOT NULL AUTO_INCREMENT,
   `grupo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_grupo`),
-UNIQUE INDEX `grupo_UNIQUE` (`grupo` ASC),
+UNIQUE INDEX `grupo_UNIQUE` (`grupo` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
