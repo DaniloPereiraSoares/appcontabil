@@ -30,6 +30,17 @@ CREATE TABLE IF NOT EXISTS `BDContabil`.`tb_empresa` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+CREATE TABLE IF NOT EXISTS `BDContabil`.`tb_usuario` (
+  `id_usuario` INT(11) NOT NULL AUTO_INCREMENT,
+  `usuario` VARCHAR(45) NOT NULL,
+  `login` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE INDEX `login_UNIQUE` (`login` ASC),
+  UNIQUE INDEX `usuario_UNIQUE` (`usuario` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
 CREATE TABLE IF NOT EXISTS `BDContabil`.`tb_balanco` (
   `id_balanco` INT(11) NOT NULL AUTO_INCREMENT,
   `fk_empresa` INT(11) NOT NULL,
