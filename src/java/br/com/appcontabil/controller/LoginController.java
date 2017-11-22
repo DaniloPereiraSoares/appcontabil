@@ -6,17 +6,20 @@
 package br.com.appcontabil.controller;
 
 import br.com.appcontabil.usuario.Usuario;
+import br.com.appcontabil.usuario.UsuarioRN;
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Coronel Mustang
  */
 
-@Named
-@ViewScoped
+@ManagedBean
+@RequestScoped
 public class LoginController{
 
     private Usuario usuario;
@@ -36,8 +39,18 @@ public class LoginController{
     
     public String inicarSessao(){
         
-        return "Ola";
-    
+        UsuarioRN usuarioRN = new UsuarioRN();
+        
+        if (usuarioRN.validarUsuario(usuario) == true) {
+            
+            return "Okds";
+            
+        } else {
+            
+            return "Falso";
+        
+        }
+        
     }
 
     
