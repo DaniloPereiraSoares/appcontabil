@@ -5,6 +5,8 @@
  */
 package br.com.appcontabil.controller;
 
+import br.com.appcontabil.usuario.Usuario;
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -17,5 +19,27 @@ import javax.inject.Named;
 @ViewScoped
 public class LoginController{
 
+    private Usuario usuario;
+
+    @PostConstruct
+    public void init(){
+        usuario = new Usuario();
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    public String inicarSessao(){
+        
+        return "Ola";
+    
+    }
+
+    
    
 }

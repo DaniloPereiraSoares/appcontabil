@@ -22,11 +22,11 @@
                     <h:form >
                         <h:panelGrid columns="1">
                             
-                            <p:inputText id="txtUsuario" value="#{usuario.login}" placeholder="Usuário" required="true"/>
-                            <p:inputText id="txtSenha" value="#{usuario.senha}" placeholder="Senha" required="true"/>
+                            <p:inputText id="txtUsuario" value="#{loginController.usuario.login}" placeholder="Usuário" required="true"/>
+                            <p:inputText id="txtSenha" value="#{loginController.usuario.senha}" placeholder="Senha" required="true"/>
                             
                             <p:messages autoUpdate="true"/>
-                            <p:commandButton icon="ui-icon-key" value="Login" action="#{loginController}"/>                            
+                            <p:commandButton icon="ui-icon-key" value="Login" action="#{loginController.inicarSessao()}"/>                            
                         </h:panelGrid>
                     </h:form>
                     

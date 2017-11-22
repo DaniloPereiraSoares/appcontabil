@@ -11,8 +11,6 @@ package br.com.appcontabil.usuario;
  */
 public class UsuarioRN {
     
-    public Usuario iniciarSesion(){
-        
-    }
+    
     
 }
