@@ -28,7 +28,7 @@ public class UsuarioDAO {
        
        try{
            
-           PreparedStatement stmt = conn.prepareStatement("SELECT * FROM `tb_usuario`");
+           PreparedStatement stmt = conn.prepareStatement("SELECT * FROM tb_usuario");
            ResultSet rs = stmt.executeQuery();
            List<Usuario> data = new ArrayList<>();
            

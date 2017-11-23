@@ -5,16 +5,10 @@
  */
 package br.com.appcontabil.usuario;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-
-
 /**
  *
  * @author Coronel Mustang
  */
-@ManagedBean
-@RequestScoped
 public class Usuario {
     
     private int id_usuario;

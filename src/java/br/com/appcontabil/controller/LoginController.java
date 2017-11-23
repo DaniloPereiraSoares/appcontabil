@@ -43,11 +43,13 @@ public class LoginController{
         
         if (usuarioRN.validarUsuario(usuario) == true) {
             
-            return "Okds";
+            return "inicio";
             
         } else {
             
-            return "Falso";
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("ok", new FacesMessage("Erro de credenciais!"));
+            return null;
         
         }
         
