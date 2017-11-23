@@ -11,15 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Coronel Mustang
  */
-@ManagedBean
-@RequestScoped
 public class UsuarioDAO {
     
     public List<Usuario> getAllUsuario() {

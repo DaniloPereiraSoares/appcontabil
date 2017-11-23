@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>APPContabil</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            
+            <b:column span="2">
+                <ui:include src="menu.xhtml" />
+            </b:column>
+            
+            <b:column span="10">
+                <h2>Empresas</h2>
+                <h:form>
+                    <b:dataTable value="#{empresaController.empresa}"
+                                 var="emp">
+                        
+                        <b:dataTableColumn label="Empresa">
+                            <h:outputText value="${emp.empresa}" />
+                        </b:dataTableColumn>
+                        
+                        <b:dataTableColumn label="CNPJ">
+                            <h:outputText value="${emp.cnpj}" />
+                        </b:dataTableColumn>
+                        
+                        <b:dataTableColumn label="ACÕES">
+                            <b:commandButton value="Editar" action="#{empresaController.editarEmpresa(emp.id_empresa)}" look="primary" /> &nbsp;
+                            <b:commandButton value="Excluir" action="#{empresaController.excluirEmpresa(emp.id_empresa)}" look="danger" />
+                        </b:dataTableColumn>
+                        
+                    </b:dataTable>
+                </h:form>
+            </b:column>
+            <b:column medium-screen="6" styleClass="message">
+                <b:growl />
+            </b:column>
+
+        </h:body>
+    </f:view>
+</html>
+

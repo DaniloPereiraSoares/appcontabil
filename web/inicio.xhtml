@@ -10,36 +10,19 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>PrimeFaces</title>
+                <title>APPContabil</title>
             </f:facet>
         </h:head>
         <h:body>
-            <p:layout fullPage="true">
+            
+            <b:column span="2">
+                <ui:include src="menu.xhtml" />
+            </b:column>
+            
+            <b:column span="10">
+                <h2>Bem vindo ao APPContabil</h2>
+            </b:column>
 
-                <p:layoutUnit position="west" size="250">
-                    <b:form>
-                        <b:column span="12">
-                            <b:panel look="primary" title="Static sidebar">
-                                <b:listLinks>
-                                    <b:navLink header="BootsFaces" />
-                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
-                                               icon="globe" iconAlign="right"/>
-                                    <b:navLink></b:navLink>
-                                    <b:navLink header="Bootstrap"/>
-                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
-                                    
-
-                                </b:listLinks>
-                             </b:panel>
-                        </b:column>
-                    </b:form>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
-                </p:layoutUnit>
-
-            </p:layout>   
         </h:body>
     </f:view>
 </html>

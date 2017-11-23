@@ -1,0 +1,35 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:b="http://bootsfaces.net/ui">
+    <b:form>
+        <b:panel look="primary" title="Static sidebar">
+            <b:listLinks>
+                <b:navLink header="EMPRESA" />
+                <b:navLink href="empresa.jsf" value="Empresa"
+                           icon="globe" iconAlign="left"/>
+                <b:navLink href="empresa_novo.jsf" value="Nova empresa"
+                           icon="globe" iconAlign="left"/>
+                <b:navLink></b:navLink><br/>
+
+                <b:navLink header="USUÁRIO" />
+                <b:navLink href="usuario.jsf" value="Usuario"
+                           icon="globe" iconAlign="left"/>
+                <b:navLink></b:navLink><br/>
+
+                <b:navLink header="CONTABILIDADE" />
+                <b:navLink href="grupo.jsf" value="Grupos"
+                           icon="globe" iconAlign="left"/>
+                <b:navLink href="subgrupo.jsf" value="Subgrupos"
+                           icon="globe" iconAlign="left"/>
+                <b:navLink href="balanco.jsf" value="Balanço"
+                           icon="globe" iconAlign="left"/>
+                <b:navLink></b:navLink><br/>
+
+            </b:listLinks>
+         </b:panel>
+    </b:form>
+</ui:composition>
+

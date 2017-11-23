@@ -20,7 +20,7 @@ public class Empresa {
     }
 
     public void setId_empresa(int id_empresa) {
-        this.id_empresa = id_empresa;
+        this.id_empresa = id_empresa; 
     }
 
     public String getEmpresa() {
@@ -28,7 +28,7 @@ public class Empresa {
     }
 
     public void setEmpresa(String empresa) {
-        this.empresa = empresa;
+        this.empresa = empresa.toUpperCase();
     }
 
     public String getCnpj() {
@@ -36,7 +36,7 @@ public class Empresa {
     }
 
     public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+        this.cnpj = cnpj.toUpperCase();
     }
     
 }
