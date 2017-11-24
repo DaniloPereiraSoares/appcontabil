@@ -5,8 +5,8 @@
  */
 package br.com.appcontabil.controller;
 
-import br.com.appcontabil.empresa.Empresa;
-import br.com.appcontabil.empresa.EmpresaRN;
+import br.com.appcontabil.usuario.Usuario;
+import br.com.appcontabil.usuario.UsuarioRN;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -18,51 +18,50 @@ import javax.faces.context.FacesContext;
  *
  * @author Coronel Mustang
  */
-
 @ManagedBean
 @RequestScoped
-public class EmpresaController{
-
-    private Empresa empresa;
-    private Empresa editarEmpresa;
-    private final EmpresaRN empresaRN = new EmpresaRN();
-
+public class UsuarioController {
+    
+    private final UsuarioRN usuarioRN = new UsuarioRN();
+    private Usuario usuario;
+    private Usuario editarUsuario;
+    
     @PostConstruct
-    public void init(){
-        empresa = new Empresa();
-        editarEmpresa = new Empresa();
+    public void init(){        
+        usuario = new Usuario();
+        editarUsuario = new Usuario();        
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getEditarUsuario() {
+        return editarUsuario;
+    }
+
+    public void setEditarUsuario(Usuario editarUsuario) {
+        this.editarUsuario = editarUsuario;
     }
     
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public Empresa getEditarEmpresa() {
-        return editarEmpresa;
-    }
-
-    public void setEditarEmpresa(Empresa editarEmpresa) {
-        this.editarEmpresa = editarEmpresa;
-    }
-    
-    public List<Empresa> listarEmpresa(){
+    public List<Usuario> listarUsuario(){
         
-        return empresaRN.preencherEmpresa();
+        return usuarioRN.preencherUsuario();
         
     }
     
     public String inserirEmpresa(){
         
         String msg;
-        msg = empresaRN.inserirEmpresa(empresa);
+        msg = usuarioRN.inserirUsuario(usuario);
         
         if (msg.equals("Ok")) {
             
-            return "empresa.jsf?faces-redirect=true";
+            return "usuario.jsf?faces-redirect=true";
             
             
         } else {
@@ -72,26 +71,25 @@ public class EmpresaController{
             
         }
         
-        
         return null;
         
     }
     
-    public String edtEmpresa(Empresa emp){
+    public String edtUsuario(Usuario usu){
         
-        editarEmpresa = emp;
-        return "empresa_editar";
+        editarUsuario = usu;
+        return "usuario_editar";
         
     }
     
-    public String editarEmpresa(){
+    public String editarUsuario(){
         
         String msg;
-        msg = empresaRN.editarEmpresa(editarEmpresa);
+        msg = usuarioRN.editarUsuario(editarUsuario);
         
         if (msg.equals("Ok")) {
             
-            return "empresa.jsf?faces-redirect=true";
+            return "usuario.jsf?faces-redirect=true";
             
         } else {
             
@@ -103,14 +101,14 @@ public class EmpresaController{
         return null;
     }
     
-    public String excluirEmpresa(Empresa emp){
+    public String excluirUsuario(Usuario usu){
         
         String msg;
-        msg = empresaRN.excluirEmpresa(emp);
+        msg = usuarioRN.excluirUsuario(usu);
         
         if (msg.equals("Ok")) {
             
-            return "empresa.jsf?faces-redirect=true";
+            return "usuario.jsf?faces-redirect=true";
             
         } else {
             
@@ -121,5 +119,5 @@ public class EmpresaController{
         
         return null;
     }
-   
+    
 }

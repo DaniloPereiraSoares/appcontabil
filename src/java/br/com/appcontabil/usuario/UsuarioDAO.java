@@ -52,4 +52,69 @@ public class UsuarioDAO {
     
     }
     
+    public String inserirUsuario(Usuario usu){
+        
+        Connection conn = Conexao.getConexao();
+       
+       try{
+           
+           PreparedStatement stmt = conn.prepareStatement("INSERT INTO tb_usuario (usuario, login, senha) VALUES (?,?,?)");
+           stmt.setString(1, usu.getUsuario());
+           stmt.setString(2, usu.getLogin());
+           stmt.setString(3, usu.getSenha());
+           stmt.execute();    
+           
+           return "ok";
+            
+       }catch(SQLException e ){
+       
+           return "" + e.getMessage();
+           
+       }
+        
+    }
+    
+    public String editarUsuario(Usuario usu){
+        
+        Connection conn = Conexao.getConexao();
+       
+       try{
+           
+           PreparedStatement stmt = conn.prepareStatement("UPDATE tb_usuario SET usuario=?, login=?, senha=? WHERE id_usuario=?");
+           stmt.setString(1, usu.getUsuario());
+           stmt.setString(2, usu.getLogin());
+           stmt.setString(3, usu.getSenha());
+           stmt.setInt(4, usu.getId_usuario());
+           stmt.execute();    
+           
+           return "ok";
+            
+       }catch(SQLException e ){
+       
+           return "" + e.getMessage();
+           
+       }
+        
+    }
+    
+    public String excluirUsuario(Usuario usu){
+        
+        Connection conn = Conexao.getConexao();
+       
+       try{
+           
+           PreparedStatement stmt = conn.prepareStatement("DELETE FROM tb_usuario WHERE id_usuario=?");
+           stmt.setInt(1, usu.getId_usuario());
+           stmt.execute();    
+           
+           return "ok";
+            
+       }catch(SQLException e ){
+       
+           return "" + e.getMessage();
+           
+       }
+       
+    }
+    
 }

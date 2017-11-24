@@ -5,8 +5,8 @@
  */
 package br.com.appcontabil.controller;
 
-import br.com.appcontabil.empresa.Empresa;
-import br.com.appcontabil.empresa.EmpresaRN;
+import br.com.appcontabil.subgrupo.Subgrupo;
+import br.com.appcontabil.subgrupo.SubgrupoRN;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -18,51 +18,50 @@ import javax.faces.context.FacesContext;
  *
  * @author Coronel Mustang
  */
-
 @ManagedBean
 @RequestScoped
-public class EmpresaController{
-
-    private Empresa empresa;
-    private Empresa editarEmpresa;
-    private final EmpresaRN empresaRN = new EmpresaRN();
-
+public class SubgrupoController {
+    
+    private final SubgrupoRN subgrupoRN = new SubgrupoRN();
+    private Subgrupo subgrupo;
+    private Subgrupo editarSubgrupo;
+    
     @PostConstruct
-    public void init(){
-        empresa = new Empresa();
-        editarEmpresa = new Empresa();
+    public void init(){        
+        subgrupo = new Subgrupo();
+        editarSubgrupo = new Subgrupo();        
+    }
+
+    public Subgrupo getSubgrupo() {
+        return subgrupo;
+    }
+
+    public void setSubgrupo(Subgrupo subgrupo) {
+        this.subgrupo = subgrupo;
+    }
+
+    public Subgrupo getEditarSubgrupo() {
+        return editarSubgrupo;
+    }
+
+    public void setEditarSubgrupo(Subgrupo editarSubgrupo) {
+        this.editarSubgrupo = editarSubgrupo;
     }
     
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public Empresa getEditarEmpresa() {
-        return editarEmpresa;
-    }
-
-    public void setEditarEmpresa(Empresa editarEmpresa) {
-        this.editarEmpresa = editarEmpresa;
-    }
-    
-    public List<Empresa> listarEmpresa(){
+    public List<Subgrupo> listarSubgrupo(){
         
-        return empresaRN.preencherEmpresa();
+        return subgrupoRN.preencherSubgrupo();
         
     }
     
-    public String inserirEmpresa(){
+    public String inserirSubgrupo(){
         
         String msg;
-        msg = empresaRN.inserirEmpresa(empresa);
+        msg = subgrupoRN.inserirSubgrupo(subgrupo);
         
         if (msg.equals("Ok")) {
             
-            return "empresa.jsf?faces-redirect=true";
+            return "subgrupo.jsf?faces-redirect=true";
             
             
         } else {
@@ -72,45 +71,25 @@ public class EmpresaController{
             
         }
         
-        
         return null;
         
     }
     
-    public String edtEmpresa(Empresa emp){
+    public String edtSubgrupo(Subgrupo usu){
         
-        editarEmpresa = emp;
-        return "empresa_editar";
+        editarSubgrupo = usu;
+        return "subgrupo_editar";
         
     }
     
-    public String editarEmpresa(){
+    public String editarSubgrupo(){
         
         String msg;
-        msg = empresaRN.editarEmpresa(editarEmpresa);
+        msg = subgrupoRN.editarSubgrupo(editarSubgrupo);
         
         if (msg.equals("Ok")) {
             
-            return "empresa.jsf?faces-redirect=true";
-            
-        } else {
-            
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage("", new FacesMessage(msg));
-            
-        }
-        
-        return null;
-    }
-    
-    public String excluirEmpresa(Empresa emp){
-        
-        String msg;
-        msg = empresaRN.excluirEmpresa(emp);
-        
-        if (msg.equals("Ok")) {
-            
-            return "empresa.jsf?faces-redirect=true";
+            return "subgrupo.jsf?faces-redirect=true";
             
         } else {
             
@@ -121,5 +100,24 @@ public class EmpresaController{
         
         return null;
     }
-   
+    
+    public String excluirSubgrupo(Subgrupo usu){
+        
+        String msg;
+        msg = subgrupoRN.excluirSubgrupo(usu);
+        
+        if (msg.equals("Ok")) {
+            
+            return "subgrupo.jsf?faces-redirect=true";
+            
+        } else {
+            
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("", new FacesMessage(msg));
+            
+        }
+        
+        return null;
+    }
+    
 }

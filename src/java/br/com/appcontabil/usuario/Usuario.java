@@ -29,7 +29,7 @@ public class Usuario {
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario;
+        this.usuario = usuario.toUpperCase();
     }
 
     public String getLogin() {

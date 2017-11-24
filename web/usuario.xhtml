@@ -1,16 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>APPContabil</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            
+            <b:column span="2">
+                <ui:include src="menu.xhtml" />
+            </b:column>
+             
+            <b:column span="10">
+                <h2>Usuários</h2>
+                <h:form id="formPrincipal">
+                    <b:dataTable id="tabela" value="#{usuarioController.listarUsuario()}" var="usu">
+                        
+                        <b:dataTableColumn label="Id">
+                            <h:outputText value="${usu.id_usuario}" />
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Usuario">
+                            <h:outputText value="${usu.usuario}" />
+                        </b:dataTableColumn>
+                        
+                        <b:dataTableColumn label="Login">
+                            <h:outputText value="${usu.login}" />
+                        </b:dataTableColumn>
+                        
+                        <b:dataTableColumn label="Senha">
+                            <h:outputText value="${usu.senha}" />
+                        </b:dataTableColumn>
+                        
+                        <b:dataTableColumn label="Ações">                                                          
+                            <b:commandButton value="Editar" look="primary" action="#{usuarioController.edtUsuario(usu)}" />
+                            <b:commandButton value="Excluir" look="danger" action="#{usuarioController.excluirUsuario(usu)}" />
+                        </b:dataTableColumn>
+                        
+                    </b:dataTable>
+                </h:form>
+            </b:column>
+            
+            <b:column medium-screen="6" styleClass="message">
+                <b:growl />
+            </b:column>
+            <p:growl id="message" showDetail="true" />
+            
+        </h:body>
+    </f:view>
 </html>
+

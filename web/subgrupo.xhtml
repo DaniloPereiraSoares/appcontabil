@@ -1,16 +1,57 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>APPContabil</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            
+            <b:column span="2">
+                <ui:include src="menu.xhtml" />
+            </b:column>
+             
+            <b:column span="10">
+                <h2>Subgrupos</h2>
+                <h:form id="formPrincipal">
+                    <b:dataTable id="tabela" value="#{subgrupoController.listarSubgrupo()}" var="subg">
+                        
+                        <b:dataTableColumn label="Id">
+                            <h:outputText value="${subg.id_subgrupo}" />
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Subgrupo">
+                            <h:outputText value="${subg.subgrupo}" />
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Grupo">
+                            <h:outputText value="${subg.grupo}" />
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="Empresa">
+                            <h:outputText value="${subg.empresa}" />
+                        </b:dataTableColumn>
+                        
+                        <b:dataTableColumn label="Ações">                                                          
+                            <b:commandButton value="Editar" look="primary" action="#{subgrupoController.edtSubgrupo(subg)}" />
+                            <b:commandButton value="Excluir" look="danger" action="#{subgrupoController.excluirSubgrupo(subg)}" />
+                        </b:dataTableColumn>
+                        
+                    </b:dataTable>
+                </h:form>
+            </b:column>
+            
+            <b:column medium-screen="6" styleClass="message">
+                <b:growl />
+            </b:column>
+            <p:growl id="message" showDetail="true" />
+            
+        </h:body>
+    </f:view>
 </html>
+

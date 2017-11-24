@@ -41,4 +41,97 @@ public class UsuarioRN {
         
     }
     
+    public String inserirUsuario(Usuario usu){
+        
+        //Verifica se já existe a usuario
+            List<Usuario> usuarioAll = new ArrayList<>(); 
+            usuarioAll = usuarioDAO.getAllUsuario();
+            
+            for(Usuario u: usuarioAll){
+
+                //Verifica se já existe nome ou login
+                if (usu.getUsuario().toString().equals(u.getUsuario()) ||
+                    usu.getLogin().toString().equals(u.getLogin())) {
+                    
+                    return "Usuário ou Login já cadastrados";
+                    
+                }
+
+            }
+            
+        //Inseri usuario
+            String msg = usuarioDAO.inserirUsuario(usu);            
+            
+            if(msg.equals("ok")){  
+                
+                return "Ok";
+                
+            }else {
+                
+                return msg;  
+                
+            }
+        
+    }
+    
+    public String editarUsuario(Usuario usu){
+        
+        //Verifica se já existe a usuario
+            List<Usuario> usuarioAll = new ArrayList<>(); 
+            usuarioAll = usuarioDAO.getAllUsuario();
+            
+            for(Usuario u: usuarioAll){
+
+                //Verifica se já existe nome ou login
+                if (usu.getUsuario().toString().equals(u.getUsuario()) ||
+                    usu.getLogin().toString().equals(u.getLogin())) {
+                    
+                    if (usu.getId_usuario() != u.getId_usuario()) {
+                        
+                        return "Usuário ou Login já cadastrados";
+                        
+                    }
+                    
+                }
+
+            }
+            
+        //Inseri usuario
+            String msg = usuarioDAO.editarUsuario(usu);
+            
+            if(msg.equals("ok")){  
+                
+                return "Ok";
+                
+            }else {
+                
+                return msg;  
+                
+            }
+        
+    }
+    
+    public List<Usuario> preencherUsuario(){
+        
+        return usuarioDAO.getAllUsuario();
+        
+    }
+    
+    public String excluirUsuario(Usuario usu){
+        
+        //Exclui empresa
+            String msg = usuarioDAO.excluirUsuario(usu);
+            
+            if(msg.equals("ok")){  
+                
+                return "Ok";
+                
+            }else {
+                
+                return msg;  
+                
+            }
+        
+    }
+    
 }

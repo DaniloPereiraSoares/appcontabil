@@ -13,7 +13,10 @@ public class Subgrupo {
     
     private int id_subgrupo;
     private int fk_grupo;
+    private int fk_empresa;
     private String subgrupo;
+    private String grupo;
+    private String empresa;
 
     public int getId_subgrupo() {
         return id_subgrupo;
@@ -36,7 +39,31 @@ public class Subgrupo {
     }
 
     public void setSubgrupo(String subgrupo) {
-        this.subgrupo = subgrupo;
+        this.subgrupo = subgrupo.toUpperCase();
+    }
+
+    public int getFk_empresa() {
+        return fk_empresa;
+    }
+
+    public void setFk_empresa(int fk_empresa) {
+        this.fk_empresa = fk_empresa;
+    }
+
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
     
 }
