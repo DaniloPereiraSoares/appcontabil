@@ -74,4 +74,46 @@ public class EmpresaDAO {
         
     }
     
+    public String editarEmpresa(Empresa emp){
+        
+        Connection conn = Conexao.getConexao();
+       
+       try{
+           
+           PreparedStatement stmt = conn.prepareStatement("UPDATE tb_empresa SET empresa=?, cnpj=? WHERE id_empresa=?");
+           stmt.setString(1, emp.getEmpresa());
+           stmt.setString(2, emp.getCnpj());
+           stmt.setInt(3, emp.getId_empresa());
+           stmt.execute();    
+           
+           return "ok";
+            
+       }catch(SQLException e ){
+       
+           return "" + e.getMessage();
+           
+       }
+        
+    }
+    
+    public String excluirEmpresa(Empresa emp){
+        
+        Connection conn = Conexao.getConexao();
+       
+       try{
+           
+           PreparedStatement stmt = conn.prepareStatement("DELETE FROM tb_empresa where id_empresa = ? ");
+           stmt.setInt(1, emp.getId_empresa());
+           stmt.execute();    
+           
+           return "ok";
+            
+       }catch(SQLException e ){
+       
+           return "" + e.getMessage();
+           
+       }
+        
+    }
+    
 }

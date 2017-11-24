@@ -5,10 +5,20 @@
  */
 package br.com.appcontabil.grupo;
 
+import java.util.List;
+
 /**
  *
  * @author Coronel Mustang
  */
 public class GrupoRN {
+    
+    private final GrupoDAO grupoDAO = new GrupoDAO();
+    
+    public List<Grupo> preencherGrupo(){
+        
+        return grupoDAO.getAllGrupos();
+        
+    }
     
 }

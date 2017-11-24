@@ -13,6 +13,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.model.DataModel;
 
 /**
  *
@@ -23,34 +25,43 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class EmpresaController{
 
-    private List<Empresa> empresa;
-    private Empresa novaEmpresa;
+    private Empresa empresa;
+    private Empresa excluirEmpresa;
+    private Empresa editarEmpresa;
     private final EmpresaRN empresaRN = new EmpresaRN();
-    
+
     @PostConstruct
     public void init(){
-        
-        novaEmpresa = new Empresa();
-        empresa = empresaRN.preencherEmpresa();
-        
+        empresa = new Empresa();
+        editarEmpresa = new Empresa();
     }
-
-    public List<Empresa> getEmpresa() {
+    
+    public Empresa getEmpresa() {
         return empresa;
     }
 
-    public Empresa getNovaEmpresa() {
-        return novaEmpresa;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
-    public void setNovaEmpresa(Empresa novaEmpresa) {
-        this.novaEmpresa = novaEmpresa;
+    public Empresa getEditarEmpresa() {
+        return editarEmpresa;
+    }
+
+    public void setEditarEmpresa(Empresa editarEmpresa) {
+        this.editarEmpresa = editarEmpresa;
+    }
+    
+    public List<Empresa> listarEmpresa(){
+        
+        return empresaRN.preencherEmpresa();
+        
     }
     
     public String inserirEmpresa(){
         
         String msg;
-        msg = empresaRN.inserirEmpresa(novaEmpresa);
+        msg = empresaRN.inserirEmpresa(empresa);
         
         if (msg.equals("Ok")) {
             
@@ -69,17 +80,48 @@ public class EmpresaController{
         
     }
     
-    public String editarEmpresa(int id_empresa){
+    public String edtEmpresa(Empresa emp){
         
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage("", new FacesMessage("" + id_empresa));
+        editarEmpresa = emp;
+        return "empresa_editar";
+        
+    }
+    
+    public String editarEmpresa(){
+        
+        String msg;
+        msg = empresaRN.editarEmpresa(editarEmpresa);
+        
+        if (msg.equals("Ok")) {
+            
+            return "empresa.jsf?faces-redirect=true";
+            
+        } else {
+            
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("", new FacesMessage(msg));
+            
+        }
+        
         return null;
     }
     
-    public String excluirEmpresa(int id_empresa){
+    public String excluirEmpresa(Empresa emp){
         
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage("", new FacesMessage("Erro de credenciais!"));
+        String msg;
+        msg = empresaRN.excluirEmpresa(emp);
+        
+        if (msg.equals("Ok")) {
+            
+            return "empresa.jsf?faces-redirect=true";
+            
+        } else {
+            
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("", new FacesMessage(msg));
+            
+        }
+        
         return null;
     }
    

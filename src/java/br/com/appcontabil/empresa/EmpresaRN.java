@@ -54,4 +54,55 @@ public class EmpresaRN {
         
     }
     
+    public String editarEmpresa(Empresa e){
+        
+        //Verifica se já existe a empresa
+            List<Empresa> empresaAll = new ArrayList<>(); 
+            empresaAll = empresaDAO.getAllEmpresa();
+            
+            for(Empresa emp: empresaAll){
+
+                if (emp.getEmpresa().toString().equals(e.getEmpresa().toString()) ||
+                    emp.getCnpj().toString().equals(e.getCnpj().toString())) {
+                    
+                    if (e.getId_empresa() != emp.getId_empresa()) {
+                        return "Empresa ou CNPJ já cadastrados";
+                    }
+                    
+                }
+
+            }
+            
+        //Editar empresa
+            String msg = empresaDAO.editarEmpresa(e);
+            
+            if(msg.equals("ok")){  
+                
+                return "Ok";
+                
+            }else {
+                
+                return msg;  
+                
+            }
+        
+    }
+    
+    public String excluirEmpresa(Empresa e){
+            
+        //Exclui empresa
+            String msg = empresaDAO.excluirEmpresa(e);
+            
+            if(msg.equals("ok")){  
+                
+                return "Ok";
+                
+            }else {
+                
+                return msg;  
+                
+            }
+        
+    }
+    
 }

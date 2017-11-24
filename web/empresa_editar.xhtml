@@ -1,16 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>APPContabil</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            
+            <b:column span="2">
+                <ui:include src="menu.xhtml" />
+            </b:column>
+            
+            <b:column span="10">
+                <b:form id="novaEmpresaForm">
+                    
+                    <b:panel title="Nova empresa" look="primary">
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Empresa:" />
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="Empresa" id="username" value="#{empresaController.editarEmpresa.empresa}"
+                                             autocomplete="false" required="true">
+                                    
+                                </b:inputText>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="username" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="CNPJ:" />
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="Cnpj" id="cnpj" value="#{empresaController.editarEmpresa.cnpj}"
+                                             autocomplete="false" required="true">
+                                    
+                                </b:inputText>
+                            </b:column>
+                            <b:column medium-screen="6" styleClass="message">
+                                <b:growl />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="2" offset="2">
+                                <b:inputText type="hidden" value="#{empresaController.editarEmpresa.id_empresa}" />
+                                <b:commandButton value="Editar" action="#{empresaController.editarEmpresa()}" update="@form" look="primary"
+                                                 style="width:100%" />
+                            </b:column>
+                        </b:row>
+                    </b:panel>
+                    
+                </b:form>
+            </b:column>
+
+        </h:body>
+    </f:view>
 </html>
+
