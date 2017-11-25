@@ -12,10 +12,11 @@ package br.com.appcontabil.conta;
 public class Conta {
     
     private int id_conta;
-    private int fk_conta;
     private int fk_subgrupo;
     private int fk_empresa;
     private String conta;
+    private String subgrupo;
+    private String empresa;
     private Double valor;
 
     public int getId_conta() {
@@ -24,14 +25,6 @@ public class Conta {
 
     public void setId_conta(int id_conta) {
         this.id_conta = id_conta;
-    }
-
-    public int getFk_conta() {
-        return fk_conta;
-    }
-
-    public void setFk_conta(int fk_conta) {
-        this.fk_conta = fk_conta;
     }
 
     public int getFk_subgrupo() {
@@ -58,6 +51,22 @@ public class Conta {
         this.conta = conta;
     }
 
+    public String getSubgrupo() {
+        return subgrupo;
+    }
+
+    public void setSubgrupo(String subgrupo) {
+        this.subgrupo = subgrupo;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
     public Double getValor() {
         return valor;
     }
@@ -65,5 +74,5 @@ public class Conta {
     public void setValor(Double valor) {
         this.valor = valor;
     }
-    
+ 
 }
